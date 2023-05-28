@@ -1,24 +1,17 @@
-import logo from './logo.svg';
+import MovieList from './Component/MovieList';
 import './App.css';
+import React, { useState } from 'react'
+import Navbar from './Component/Navbar';
 
 function App() {
+  const [favSection, changeFavSection] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="movie-app">
+        <Navbar favSection={favSection} />
+        <MovieList changeFavSection={changeFavSection} />
+      </div>
+    </>
   );
 }
 
