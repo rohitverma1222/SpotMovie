@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import img from './music.jpg'
+
 
 export default function Navbar({ favSection }) {
 
@@ -16,7 +16,6 @@ export default function Navbar({ favSection }) {
         return () => { };
     }, [])
     useEffect(() => {
-        //Runs on every render
         (async () => {
             let datas = JSON.parse(localStorage.getItem("movies-app") || "[]")
             let oldData = []
@@ -26,7 +25,7 @@ export default function Navbar({ favSection }) {
             setFav([...oldData])
         })();
         return () => { };
-    });
+    },[favSection])
     return (
         <>
             <div className="navbar">
@@ -37,7 +36,7 @@ export default function Navbar({ favSection }) {
                 <div className="wrapper">
                     <div className="library">
                         <div className="lib">
-                            <div>
+                            <div id='your'>
                                 <i className="fa-solid fa-bars"></i> Your Library
                             </div>
                         </div>

@@ -5,6 +5,7 @@ import Navbar from './Component/Navbar';
 
 function App() {
   const [favSection, changeFavSection] = useState([]);
+  // console.log(favSection);
   return (
     <>
       <div className="movie-app">

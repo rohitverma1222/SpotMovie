@@ -45,19 +45,38 @@
   margin: 5px 10px 10px 10px;
   border-radius: 10px;
   height: calc(100%);
+  overflow:scroll;
+}
+.wrapper::-webkit-scrollbar {
+  display: none;
 }
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.wrapper {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 .navbar .library{
   color: var(--text-color);
+  /* overflow: scroll; */
 }
 .library .lib{
   font-family: 'Roboto',sans-serif;
   font-weight: bold;
   padding-top: 10px;
-  margin:1rem 1.5rem;
+  /* margin:1rem 1.5rem; */
   font-size: var(--font-size);
   display: flex;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  background-color: var(--background-color);
   justify-content: space-between;
+}
+#your{
+  width: 100%;
+  padding: 1rem 1.5rem;
 }
 .library .small-btn{
   margin: 1rem;
@@ -72,11 +91,13 @@
   padding: 2px;
   border: none;
 }
+
 .library .movie-details{
   font-family: 'Montserrat',sans-serif;
   height: 4rem;
   padding: 10px;
   margin: 0 2px;
+  position: relative;
 }
 .library .movie-details img{
   height: 100%;
@@ -85,7 +106,6 @@
 }
 .library .movie-details .title{
   display: inline-block;
-  width: 12%;
   position: absolute;
 }
 .library .movie-details .title .title-head{
@@ -155,6 +175,16 @@
    flex-wrap: wrap;
    align-items: center;
    justify-content: center;
+   /* background-color: red; */
+}
+.movies::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.movies {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 .movies .trending .movie-card
 {
@@ -202,6 +232,9 @@
   padding: 1rem 1rem 1rem 2rem;
   font-size: 20px;
   font-weight: 900;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
 }
 .fav{
   background-color: var(--play-btn);
@@ -213,6 +246,29 @@
   position: absolute;
   bottom: 4.7rem;
   right: 1.3rem;
+}
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+.pagination button{
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  margin: 0 0.5rem;
+  /* background-color: #1FDF64; */
+  background: transparent;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 0.3rem 1.5rem;
+  cursor: pointer;
+  font-weight: 900;
+}
+.pagination button:hover{
+  background-color: var(--hover-color);
+}
+.footer{
+  padding: 1rem;
 }
 
 @media screen and (max-width: 2000px) {
