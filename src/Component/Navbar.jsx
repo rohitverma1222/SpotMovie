@@ -37,7 +37,7 @@ export default function Navbar({ favSection }) {
                     <div className="library">
                         <div className="lib">
                             <div id='your'>
-                                <i className="fa-solid fa-bars"></i> Your Library
+                                <i className="fa-solid fa-bars"></i> Your Favourite
                             </div>
                         </div>
                         {

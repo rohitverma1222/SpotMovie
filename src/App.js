@@ -1,5 +1,5 @@
 import MovieList from './Component/MovieList';
-import './App.css';
+import './App.scss';
 import React, { useState } from 'react'
 import Navbar from './Component/Navbar';
 
