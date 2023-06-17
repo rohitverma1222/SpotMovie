@@ -332,8 +332,6 @@
   padding: 0.3rem 1.5rem;
   cursor: pointer;
   font-weight: 900;
-}
-.pagination button:hover {
   background-color: var(--hover-color);
 }
 
@@ -480,7 +478,7 @@
   {
     display: flex;
     justify-content: center;
-    
+
   }
   .wrapper{
     margin: 5px;
