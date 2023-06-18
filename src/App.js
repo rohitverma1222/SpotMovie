@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <div className="movie-app">
-        <Navbar favSection={favSection} />
-        <MovieList changeFavSection={changeFavSection} />
+        <Navbar favSection={favSection} changeFavSection={changeFavSection}/>
+        <MovieList favSection={favSection} changeFavSection={changeFavSection} />
       </div>
     </>
   );

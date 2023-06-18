@@ -2,7 +2,10 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { CSSTransition } from 'react-transition-group';
 import { useState, useRef } from 'react'
-export default function MovieList({ changeFavSection }) {
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Snackbar from '@mui/material/Snackbar';
+export default function MovieList({ favSection,changeFavSection }) {
 
   const [movies, setMovies] = useState([]);
 
@@ -14,12 +17,31 @@ export default function MovieList({ changeFavSection }) {
 
   const [wish, setwish] = useState('');
 
+  const [open, setOpen] = React.useState(false);
+  const vertical= 'bottom';
+   const horizontal= 'center';
+
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   let genreids = {
     28: 'Action', 12: 'Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History',
     27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'SciFic', 10770: 'TV', 53: 'Thriller', 10752: 'War', 37: 'Western'
   };
-
+  useEffect(()=>{
+    let temp = favSection.map((movie) => movie.id);
+    setFav([...temp])
+  },[favSection])
   useEffect(() => {
     (async () => {
       const res = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=5540e483a20e0b20354dabc2d66a31c9&language=en-US&page=${currPage}`)
@@ -102,6 +124,7 @@ export default function MovieList({ changeFavSection }) {
             movies.map((movieObj) => (
               <CSSTransition
                 in={inProp}
+                timeout={400}
                 classNames="my-node"
                 nodeRef={nodeRef}
                 onMouseEnter={() => {setHover(movieObj.id);setInProp(true)}} onMouseLeave={() => {setHover('');setInProp(false)}}
@@ -112,14 +135,15 @@ export default function MovieList({ changeFavSection }) {
                   <img src={`https://image.tmdb.org/t/p/original${movieObj.backdrop_path}`} alt="" />
                   {
                     inProp &&  hover === movieObj.id &&
-                    <div className="fav" ref={nodeRef} onClick={()=>handleAddFav(movieObj)}>
+                    <div className="fav " ref={nodeRef} onClick={()=>handleAddFav(movieObj)}>
                       {
                         fav.includes(movieObj.id) ?
                           <i className="fa-solid fa-heart fa-xl" 
-                          // onClick={() => handleAddFav(movieObj)}
+                          onClick={() => handleClick()}
                           ></i> :
                           <i className="fa-regular fa-heart fa-xl" 
-                          // onClick={() => handleAddFav(movieObj)}
+                          onClick={() => handleClick()}
+
                           ></i>
                       }
                     </div>
@@ -143,6 +167,17 @@ export default function MovieList({ changeFavSection }) {
           </div>
         </div>
       </div>
+
+      {/* SnackBar */}
+
+      <Snackbar
+      anchorOrigin={{ vertical, horizontal }}
+      className="snackbar"
+        open={open}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message="Added to your Favorites"
+      />
     </>
   )
 }
