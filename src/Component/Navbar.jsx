@@ -40,10 +40,20 @@ export default function Navbar({ favSection, changeFavSection }) {
             SetAnimate(false)
         }, 1000)
     }
+    
+    const [isShowHamburger,SetShowHamburger]=useState(false);
+
+    const handleHamburger=()=>{
+        SetShowHamburger(!isShowHamburger);    
+    }
+
+    const hideNavbar={
+        width:"7%",
+    }
     const [animate, SetAnimate] = useState(false)
     return (
         <>
-            <div className="navbar">
+            <div className={isShowHamburger ?"navbar navbar-hide":"navbar"} >
                 <div className="home">
                     <button><i class="fa-solid fa-house"></i> <span>Home</span></button>
                     <button><i className="fa-solid fa-magnifying-glass"></i> <span>Search</span></button>
@@ -52,7 +62,7 @@ export default function Navbar({ favSection, changeFavSection }) {
                     <div className="library">
                         <div className="lib">
                             <div id='your'>
-                                <i className="fa-solid fa-bars"></i> <span>Favourites</span>
+                                <i className="fa-solid fa-bars" onClick={handleHamburger}></i> <span>Favourites</span>
                             </div>
                         </div>
                         {

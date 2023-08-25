@@ -17,7 +17,12 @@
   height: 100vh;
   background-color: black;
 }
-
+.navbar-hide{
+  width: 7rem;
+  span{
+    display: none;
+  }
+}
 .home {
   font-family: 'Montserrat', sans-serif;
   border-radius: 10px;
@@ -270,7 +275,7 @@
 
 .subheading {
   font-family: "Montserrat", sans-serif;
-  padding: 1rem 1rem 1rem 2rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   font-size: 20px;
   font-weight: 900;
   display: flex;
@@ -320,7 +325,7 @@
   // background-color: #111111;
   color: white;
   animation: shake 0.5s;
-  animation-iteration-count: 2;
+  animation-iteration-count: 1;
 }
 
 @keyframes shake {
@@ -530,8 +535,64 @@
   }
 
   .navbar {
-    width: 3rem;
+    width: 4rem;
+    .nav-fav{
+      display: none;
+    }
+  }
+  .home{
+    display: flex;
+    flex-direction: column;
+    height: 8rem;
+    justify-content: space-around;
+  }
+  i{
+    // width: 100%;
+    font-size: 20px !important;
+  }
+  // these property shown when hamburger is opened
+  .navbar-hide{
+    position: absolute;
+    z-index: 1000;
+    width: 12rem;
 
+    // .navbar-hide 
+    span{
+      display: inline;
+      overflow: visible;
+    }
+    .nav-fav{
+      display: flex;
+    }
+    .movie-details{
+      height: 3rem !important;
+    }
+    .library .movie-details .title{
+      display: flex;
+      flex-direction: column;
+      width: 300%;
+      .title{
+        width: 180%;
+      }
+      .title-head{
+        font-size: 14px;
+        padding: 5px;
+      }
+    }
+    .movie-details i{
+      position: absolute;
+      right: 10px;
+      z-index: 10000;
+      font-size: 10px;
+      margin: 15px 0 !important;
+    }
+    .library .movie-details{
+      display: flex;
+      margin: 0;
+    }
+    .navbar .home button span{
+      display: "";
+    }
   }
 
   .wrapper {
@@ -568,7 +629,7 @@
   .library .movie-details {
     font-family: 'Montserrat', sans-serif;
     height: 1.5rem;
-    width: 2rem;
+    // width: 2rem;
     border-radius: 3px;
     padding: 3px;
     margin: 2px 2px;

@@ -17,21 +17,28 @@ export default function MovieList({ favSection,changeFavSection }) {
 
   const [wish, setwish] = useState('');
 
-  const [open, setOpen] = React.useState(false);
+  const [msgandSnackbar, setmsgandSnackbar] = React.useState({
+    Message:"",
+    isOpen:false,
+  });
   const vertical= 'bottom';
    const horizontal= 'center';
 
 
-  const handleClick = () => {
-    setOpen(true);
+  const handleClick = (msg) => {
+    console.log(msg);
+    setmsgandSnackbar({
+      Message:`${msg}`+" Favourites",
+      isOpen:true,
+    })
   };
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-
-    setOpen(false);
+    setmsgandSnackbar({ Message:"",
+    isOpen:false,});
   };
 
   let genreids = {
@@ -139,11 +146,10 @@ export default function MovieList({ favSection,changeFavSection }) {
                       {
                         fav.includes(movieObj.id) ?
                           <i className="fa-solid fa-heart fa-xl" 
-                          onClick={() => handleClick()}
+                          onClick={() => handleClick("Removed from")}
                           ></i> :
                           <i className="fa-regular fa-heart fa-xl" 
-                          onClick={() => handleClick()}
-
+                          onClick={() => handleClick("Added in")}
                           ></i>
                       }
                     </div>
@@ -173,10 +179,10 @@ export default function MovieList({ favSection,changeFavSection }) {
       <Snackbar
       anchorOrigin={{ vertical, horizontal }}
       className="snackbar"
-        open={open}
+        open={msgandSnackbar.isOpen}
         autoHideDuration={2000}
         onClose={handleClose}
-        message="Added to your Favorites"
+        message={msgandSnackbar.Message} 
       />
     </>
   )
