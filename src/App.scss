@@ -42,6 +42,7 @@
   font-weight: 500;
   font-size: 25px;
   border: none;
+  border-radius: 20px;
 }
 
 .navbar .home button i {
@@ -383,15 +384,14 @@
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   margin: 0 0.5rem;
-  /* background-color: #1FDF64; */
-  background: transparent;
+   background-color: #232423; 
   color: white;
   border-radius: 20px;
   border: none;
   padding: 0.3rem 1.5rem;
   cursor: pointer;
   font-weight: 900;
-  background-color: var(--hover-color);
+  // background-color: var(--hover-color);
 }
 
 .footer {
@@ -487,7 +487,7 @@
     font-size: 34px;
     margin: 0 1.5rem;
     /* background-color: #1FDF64; */
-    background: transparent;
+    background-color: #333232;
     color: white;
     border-radius: 30px;
     border: none;

@@ -111,13 +111,20 @@ export default function MovieList({ favSection,changeFavSection }) {
 
   const [inProp, setInProp] = useState(false);
 
+  const [OpenSearchBox,SetOpenSearchBox]=useState(true);
+
   const nodeRef = useRef(null);
 
   return (
     <>
       <div className="movies">
         <div className="movie-navbar">
-          <div className="greet">{wish}</div>
+          <div className="greet">
+            {wish}
+          {/* {
+            <input></input>
+          } */}
+          </div>
           <div className="profile">R</div>
         </div>
         <div className="subheading">Trending
