@@ -6,7 +6,12 @@ import Snackbar from "@mui/material/Snackbar";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-export default function MovieList({ favSection, changeFavSection }) {
+export default function MovieList({
+  favSection,
+  changeFavSection,
+  setOpenSearchBar,
+  openSearchBar,
+}) {
   const [movies, setMovies] = useState([]);
 
   const [currPage, setCurrpage] = useState(1);
@@ -15,7 +20,26 @@ export default function MovieList({ favSection, changeFavSection }) {
 
   const [fav, setFav] = useState([]);
 
-  const [wish, setwish] = useState("");
+  const greet = () => {
+    var date = new Date();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    if (minute < 10) {
+      minute = "0" + minute;
+    }
+    if (second < 10) {
+      second = "0" + second;
+    }
+    if (hour < 12) {
+      return "Good Morning";
+    } else if (hour < 17) {
+      return "Good Afternoon";
+    } else {
+      return "Good Evening";
+    }
+  };
+  const wish = greet();
 
   const [msgandSnackbar, setmsgandSnackbar] = React.useState({
     Message: "",
@@ -23,6 +47,8 @@ export default function MovieList({ favSection, changeFavSection }) {
   });
   const vertical = "bottom";
   const horizontal = "center";
+
+  const [ShowSearch, setShowSearch] = useState(false);
 
   const handleClick = (msg) => {
     console.log(msg);
@@ -66,12 +92,16 @@ export default function MovieList({ favSection, changeFavSection }) {
   useEffect(() => {
     let temp = favSection.map((movie) => movie.id);
     setFav([...temp]);
-  }, [favSection]);
+    setShowSearch(openSearchBar);
+  }, [favSection, setOpenSearchBar]);
   useEffect(() => {
     (async () => {
-      const res = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=5540e483a20e0b20354dabc2d66a31c9&language=en-US&page=${currPage}`
-      );
+      let mainPageUrl =
+        openSearchBar === true
+          ? `https://api.themoviedb.org/3/movie/popular?api_key=5540e483a20e0b20354dabc2d66a31c9&language=en-US&page=${currPage}`
+          : `https://api.themoviedb.org/3/search/movie?query=${searchText}&api_key=5540e483a20e0b20354dabc2d66a31c9&page=${currPage}`;
+      const res = await axios.get(mainPageUrl);
+
       const data = res.data;
       setMovies([...data.results]);
       let datas = JSON.parse(localStorage.getItem("movies-app") || "[]");
@@ -83,24 +113,6 @@ export default function MovieList({ favSection, changeFavSection }) {
       setFav([...temp]);
       // changeFavSection([...oldData])
     })();
-
-    var date = new Date();
-    var hour = date.getHours();
-    var minute = date.getMinutes();
-    var second = date.getSeconds();
-    if (minute < 10) {
-      minute = "0" + minute;
-    }
-    if (second < 10) {
-      second = "0" + second;
-    }
-    if (hour < 12) {
-      setwish("Good Morning");
-    } else if (hour < 17) {
-      setwish("Good Afternoon");
-    } else {
-      setwish("Good Evening");
-    }
 
     return () => {};
   }, [currPage]);
@@ -175,15 +187,48 @@ export default function MovieList({ favSection, changeFavSection }) {
   const handleLoadImage = () => {
     setLoaded(true);
   };
+  // console.log(typeof openSearchBar);
+  const [searchText, setsearchText] = useState("");
+
+  const handlesearchText = (e) => {
+    setsearchText(e.target.value);
+  };
+  React.useEffect(() => {
+    if(openSearchBar===false && searchText.length!=0)
+    {
+      const getData = setTimeout(() => {
+        axios
+          .get(
+            `https://api.themoviedb.org/3/search/movie?query=${searchText}&api_key=5540e483a20e0b20354dabc2d66a31c9&page=${currPage}`
+          )
+          .then((response) => {
+            const data = response.data;
+            setMovies([...data.results]);
+          });
+      }, );
+  
+      return () => clearTimeout(getData);
+    }
+  }, [searchText]);
   return (
     <>
       <div className="movies">
         <div className="movie-navbar">
           <div className="greet">
-            {wish}
-            {/* {
-            <input></input>
-          } */}
+            {openSearchBar ? (
+              <>{wish}</>
+            ) : (
+              <>
+              <div className="search-box">
+                <input
+                  name="search"
+                  onChange={(e) => handlesearchText(e)}
+                  value={searchText}
+                ></input>
+                <i class="fas fa-search"></i>
+              </div>
+              </>
+            )}
           </div>
           <div className="profile">R</div>
         </div>
@@ -287,11 +332,7 @@ export default function MovieList({ favSection, changeFavSection }) {
             <div className="all-details">
               <p className="movie-title">
                 {popUpData.title}
-                <div
-                  className="fav "
-                  ref={nodeRef}
-                  onClick={() => handleAddFav(popUpData)}
-                >
+                <div className="fav " onClick={() => handleAddFav(popUpData)}>
                   {fav.includes(popUpData.id) ? (
                     <i
                       className="fa-solid fa-heart fa-xl"

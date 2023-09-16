@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function Navbar({ favSection, changeFavSection }) {
+export default function Navbar({ favSection, changeFavSection ,setOpenSearchBar,openSearchBar}) {
   const [fav, setFav] = useState(favSection);
 
   const [hover, SetHover] = useState("");
@@ -25,7 +25,7 @@ export default function Navbar({ favSection, changeFavSection }) {
       setFav([...oldData]);
     })();
     return () => {};
-  }, [favSection]);
+  }, [favSection,setOpenSearchBar]);
 
   const handleAddFav = (movie) => {
     setTimeout(() => {
@@ -70,11 +70,11 @@ export default function Navbar({ favSection, changeFavSection }) {
     <>
       <div className={isShowHamburger ? "navbar navbar-hide" : "navbar"}>
         <div className="home">
-          <button>
+          <button onClick={()=>window.location.reload()}>
             <i class="fa-solid fa-house"></i> <span>Home</span>
           </button>
-          <button>
-            <i className="fa-solid fa-magnifying-glass"></i> <span>Search</span>
+          <button onClick={()=>setOpenSearchBar(!openSearchBar)}>
+            <i className="fa-solid fa-magnifying-glass" ></i> <span>Search</span>
           </button>
         </div>
         <div className="wrapper">
@@ -85,7 +85,7 @@ export default function Navbar({ favSection, changeFavSection }) {
                 <span>Favourites</span>
               </div>
             </div>
-            {!loaded && loadingScreen()}
+            {!loaded && fav.length>0 && loadingScreen()}
             {fav.map((movieObj) => (
               <div
                 className="movie-details"

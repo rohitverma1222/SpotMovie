@@ -1114,3 +1114,29 @@
   width: 10rem;
   border-radius: 5px;
 }
+.greet .search-box{
+  height: 100%;
+  width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: var(--hover-color);
+border-radius: 25px;
+}
+.search-box i{
+  font-size:1rem;
+}
+.greet .search-box input{
+  height: 100%;
+  width: 80%;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  border-radius: 25px;
+
+  padding: 0 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  background-color: var(--hover-color);
+  color: #FFFEFE;
+}
