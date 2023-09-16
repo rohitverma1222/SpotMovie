@@ -17,12 +17,15 @@
   height: 100vh;
   background-color: black;
 }
-.navbar-hide{
+
+.navbar-hide {
   width: 7rem;
-  span{
+
+  span {
     display: none;
   }
 }
+
 .home {
   font-family: 'Montserrat', sans-serif;
   border-radius: 10px;
@@ -272,7 +275,8 @@
   border-radius: 4px;
 
 }
-.movies .trending .movie-card .trending-image img{
+
+.movies .trending .movie-card .trending-image img {
   height: 100%;
   width: 100%;
   border-radius: 4px;
@@ -289,7 +293,8 @@
   justify-content: center;
   justify-content: space-between;
 }
-.snackbar div:nth-child(1){
+
+.snackbar div:nth-child(1) {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   border-radius: 15px;
@@ -297,6 +302,7 @@
   background-color: var(--play-btn);
   margin: 0 auto;
 }
+
 .fav {
   background-color: var(--play-btn);
   display: inline-block;
@@ -311,7 +317,8 @@
   /* transition-duration: 0.5s; */
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.753);
 }
-.nav-fav{
+
+.nav-fav {
   background-color: transparent;
   display: inline-block;
   // padding: 15px 12px;
@@ -325,10 +332,12 @@
   z-index: 10000;
   // box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.753);
 }
-.nav-fav i{
+
+.nav-fav i {
   cursor: pointer;
 }
-.active{
+
+.active {
   // background-color: #111111;
   color: white;
   animation: shake 0.5s;
@@ -336,22 +345,29 @@
 }
 
 @keyframes shake {
-  10%, 90% {
+
+  10%,
+  90% {
     transform: translate3d(-1px, 0, 0);
   }
-  
-  20%, 80% {
+
+  20%,
+  80% {
     transform: translate3d(2px, 0, 0);
   }
 
-  30%, 50%, 70% {
+  30%,
+  50%,
+  70% {
     transform: translate3d(-3px, 0, 0);
   }
 
-  40%, 60% {
+  40%,
+  60% {
     transform: translate3d(3px, 0, 0);
   }
 }
+
 .my-node-enter {
   position: absolute;
   opacity: 0;
@@ -390,7 +406,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   margin: 0 0.5rem;
-   background-color: #232423; 
+  background-color: #232423;
   color: white;
   border-radius: 20px;
   border: none;
@@ -533,84 +549,107 @@
 
 
 @media screen and (max-width: 1000px) {
+
+  // dummy card
+  .dummy-movie-card {
+    width: calc(100%/1) !important;
+  }
+
   .movies {
     height: calc(100vh - 10px);
     margin: 5px 5px 5px 0;
     border-radius: 3px;
     background-color: var(--short-display-background);
   }
-  .covering-up{
+
+  .covering-up {
     flex-direction: column;
     overflow: scroll;
   }
-  .covering-up .img-section{
+
+  .covering-up .img-section {
     margin-top: 20%;
     width: 90% !important;
   }
-  .sub-title{
+
+  .sub-title {
     flex-direction: column;
   }
-  .covering-up .all-details{
+
+  .covering-up .all-details {
     margin-top: 10%;
     width: 95%;
   }
+
   .navbar {
     width: 4rem;
-    .nav-fav{
+
+    .nav-fav {
       display: none;
     }
   }
-  .home{
+
+  .home {
     display: flex;
     flex-direction: column;
     height: 8rem;
     justify-content: space-around;
   }
-  i{
+
+  i {
     // width: 100%;
     font-size: 20px !important;
   }
+
   // these property shown when hamburger is opened
-  .navbar-hide{
+  .navbar-hide {
     position: absolute;
     z-index: 1000;
     width: 12rem;
 
     // .navbar-hide 
-    span{
+    span {
       display: inline;
       overflow: visible;
     }
-    .nav-fav{
+
+    .nav-fav {
       display: flex;
     }
-    .movie-details{
+
+    .movie-details {
       height: 3rem !important;
     }
-    .library .movie-details .title{
+
+    .library .movie-details .title {
       display: flex;
       flex-direction: column;
       width: 300%;
-      .title{
+
+      .title {
         width: 180%;
       }
-      .title-head{
+
+      .title-head {
         font-size: 14px;
         padding: 5px;
       }
     }
-    .movie-details i{
+
+    .movie-details i {
       position: absolute;
       right: 10px;
       z-index: 10000;
       font-size: 10px;
       margin: 15px 0 !important;
     }
-    .library .movie-details{
+
+    .library .movie-details {
       display: flex;
       margin: 0;
     }
-    .navbar .home button span{
+
+    .navbar .home button span {
       display: "";
     }
   }
@@ -665,6 +704,7 @@
   .library .movie-details .title {
     display: none;
   }
+
   .library .movie-details:hover {
     background-color: var(--hover-color);
     cursor: pointer;
@@ -740,7 +780,7 @@
   }
 
   .movies .trending .movie-card {
-    width: calc(100% );
+    width: calc(100%);
     height: 35rem;
     padding: 1.4rem;
     border-radius: 10px;
@@ -818,7 +858,7 @@
 
 // pop-up design
 
-.pop-up{
+.pop-up {
   color: white;
   outline: none;
   height: 85%;
@@ -827,7 +867,8 @@
   // box-shadow: 0 10px 20px rgba(201, 199, 199, 0.19), 0 6px 6px rgba(172, 165, 165, 0.23);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
-.pop-up #close{
+
+.pop-up #close {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -836,10 +877,12 @@
   z-index: 1000;
   border-radius: 50%;
 }
-.pop-up i:hover{
+
+.pop-up i:hover {
   background-color: var(--play-btn);
 }
-.covering-up{
+
+.covering-up {
   background-color: rgba(0, 0, 0, 0.8);
   height: 100%;
   border-radius: 10px;
@@ -848,12 +891,14 @@
   justify-content: center;
   align-items: center;
 }
-.covering-up .img-section{
+
+.covering-up .img-section {
   width: 24%;
   height: 80%;
   margin-right: 1rem;
 }
-.covering-up .img-section img{
+
+.covering-up .img-section img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -861,8 +906,7 @@
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-.all-details
-{
+.all-details {
   margin-left: 2.5%;
   width: 70%;
   height: 80%;
@@ -881,7 +925,7 @@
 .single-chart {
   width: 9%;
   color: red !important;
-  justify-content: space-around ;
+  justify-content: space-around;
 }
 
 .circular-chart {
@@ -924,43 +968,49 @@
 }
 
 // pop-up details
-  
-.pop-up .movie-title{
+
+.pop-up .movie-title {
   font-size: 30px;
   font-weight: 900;
-  font-family: 'Roboto', sans-serif; ;
-
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-between;
 }
-.pop-up .sub-title{
-  font-family: 'Roboto', sans-serif; 
+
+.pop-up .sub-title {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   margin-top: 10px;
 }
-.pop-up .sub-title p{
+
+.pop-up .sub-title p {
   margin-right: 10px;
 }
-.pop-up .sub-title .movie-desc
-{
-    display: flex;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    font-weight: 450;
-    color: #ffffff;
-    overflow: hidden;
+
+.pop-up .sub-title .movie-desc {
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 450;
+  color: #ffffff;
+  overflow: hidden;
 }
+
 .pop-up .sub-title .movie-desc>* {
   background-color: rgb(55, 54, 54);
   padding: 2px 10px;
   border-radius: 10px;
   margin: 0 7px 0 0;
 }
-.pop-up .score .user-score{
+
+.pop-up .score .user-score {
   margin: 20px 0;
   display: flex;
   // height: 30%;
 
 }
-.pop-up .score .fav-in-popup{
+
+.pop-up .score .fav-in-popup {
   // margin: 10px ;
   font-size: 2rem;
   color: var(--play-btn);
@@ -970,14 +1020,17 @@
   border-radius: 50%;
   font-weight: 800;
 }
-.pop-up .overview{
+
+.pop-up .overview {
   margin: 30px 0;
 }
-.pop-up .overview h4{
+
+.pop-up .overview h4 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
-.pop-up .overview p{
+
+.pop-up .overview p {
   margin-top: 10px;
   font-family: "Montserrat", sans-serif;
   // font-style: italic;
@@ -988,27 +1041,30 @@
 
 // skeleton Design
 
-.skeleton{
+.skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
 }
-.skeleton-text{
+
+.skeleton-text {
   width: 100%;
   height: 1rem;
   margin: .25rem 0;
   border-radius: 0.1rem;
 }
+
 @keyframes skeleton-loading {
-  0%{
+  0% {
     background-color: hsla(120, 1%, 36%, 0.623);
   }
-  100%{
+
+  100% {
     background-color: hsla(60, 2%, 12%, 0.863);
   }
 }
 
 
 // dummy card
-.dummy-movie-card{
+.dummy-movie-card {
   margin: 1rem 0.5rem 1rem 0.5rem;
   border-radius: 6px;
   padding: 0.8rem;
@@ -1017,22 +1073,26 @@
   height: 25rem;
   position: relative;
 }
-.dummy-movie-card .trending-image{
+
+.dummy-movie-card .trending-image {
   height: 85%;
   width: 100%;
   border-radius: 4px;
 }
-.dummy-movie-card .skeleton-text{
+
+.dummy-movie-card .skeleton-text {
   margin: 0.4rem 0 0 0;
   border-radius: 4px;
   width: 80%;
   display: inline-block;
 }
-.dummy-movie-card .movie-desc{
+
+.dummy-movie-card .movie-desc {
   display: flex;
   height: 1rem;
 }
-.dummy-movie-card .movie-desc p{
+
+.dummy-movie-card .movie-desc p {
   margin: 5px 10px 0 0;
   border-radius: 30px;
 
@@ -1040,7 +1100,7 @@
 }
 
 // dummy dummy-movie-details of favourite section
-.library .dummy-movie-details{
+.library .dummy-movie-details {
 
   font-family: 'Montserrat', sans-serif;
   height: 4rem;
@@ -1048,7 +1108,8 @@
   margin: 0 2px;
   display: flex;
 }
-.library .dummy-movie-details .fav-image{
+
+.library .dummy-movie-details .fav-image {
   height: 100%;
   width: 10rem;
   border-radius: 5px;

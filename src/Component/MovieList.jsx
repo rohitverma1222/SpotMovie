@@ -172,9 +172,9 @@ export default function MovieList({ favSection, changeFavSection }) {
     ));
     return <>{elements}</>;
   };
-  const handleLoadImage=()=>{
-    setLoaded(true)
-  }
+  const handleLoadImage = () => {
+    setLoaded(true);
+  };
   return (
     <>
       <div className="movies">
@@ -199,66 +199,68 @@ export default function MovieList({ favSection, changeFavSection }) {
           </div>
         </div>
         <div className="trending">
-          {loaded == false ? <>{loadingScreen()}</>:""}
+          {loaded == false ? <>{loadingScreen()}</> : ""}
 
-              {movies.map((movieObj) => (
-                <CSSTransition
-                  in={inProp}
-                  timeout={400}
-                  classNames="my-node"
-                  nodeRef={nodeRef}
-                  onMouseEnter={() => {
-                    setHover(movieObj.id);
-                    setInProp(true);
-                  }}
-                  onMouseLeave={() => {
-                    setHover("");
-                    setInProp(false);
-                  }}
-                >
+          {movies.map((movieObj) => (
+            <CSSTransition
+              in={inProp}
+              timeout={400}
+              classNames="my-node"
+              nodeRef={nodeRef}
+              onMouseEnter={() => {
+                setHover(movieObj.id);
+                setInProp(true);
+              }}
+              onMouseLeave={() => {
+                setHover("");
+                setInProp(false);
+              }}
+            >
+              <div
+                className="movie-card"
+                key={movieObj.id}
+                // onMouseEnter={() => setHoverImg(true)} onMouseLeave={() => setHoverImg(false)}
+              >
+                <div className="trending-image skeleton">
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${movieObj.poster_path}`}
+                    alt=""
+                    onLoad={() => {
+                      handleLoadImage();
+                    }}
+                    onClick={() => handlePopup(movieObj)}
+                  />
+                </div>
+                {inProp && hover === movieObj.id && (
                   <div
-                    className="movie-card"
-                    key={movieObj.id}
-                    // onMouseEnter={() => setHoverImg(true)} onMouseLeave={() => setHoverImg(false)}
+                    className="fav "
+                    ref={nodeRef}
+                    onClick={() => handleAddFav(movieObj)}
                   >
-                    <div className="trending-image skeleton">
-                      <img
-                        src={`https://image.tmdb.org/t/p/original${movieObj.poster_path}`}
-                        alt=""
-                        onLoad={() => {handleLoadImage()}}
-                        onClick={() => handlePopup(movieObj)}
-                      />
-                    </div>
-                    {inProp && hover === movieObj.id && (
-                      <div
-                        className="fav "
-                        ref={nodeRef}
-                        onClick={() => handleAddFav(movieObj)}
-                      >
-                        {fav.includes(movieObj.id) ? (
-                          <i
-                            className="fa-solid fa-heart fa-xl"
-                            onClick={() => handleClick("Removed from")}
-                          ></i>
-                        ) : (
-                          <i
-                            className="fa-regular fa-heart fa-xl"
-                            onClick={() => handleClick("Added in")}
-                          ></i>
-                        )}
-                      </div>
+                    {fav.includes(movieObj.id) ? (
+                      <i
+                        className="fa-solid fa-heart fa-xl"
+                        onClick={() => handleClick("Removed from")}
+                      ></i>
+                    ) : (
+                      <i
+                        className="fa-regular fa-heart fa-xl"
+                        onClick={() => handleClick("Added in")}
+                      ></i>
                     )}
-                    <p className="movie-name" onClick={handleOpen}>
-                      {movieObj.title}
-                    </p>
-                    <div onClick={handleOpen} className="movie-desc">
-                      {movieObj.genre_ids.map((id) => (
-                        <p>{genreids[id]}</p>
-                      ))}
-                    </div>
                   </div>
-                </CSSTransition>
-              ))}
+                )}
+                <p className="movie-name" onClick={handleOpen}>
+                  {movieObj.title}
+                </p>
+                <div onClick={handleOpen} className="movie-desc">
+                  {movieObj.genre_ids.map((id) => (
+                    <p>{genreids[id]}</p>
+                  ))}
+                </div>
+              </div>
+            </CSSTransition>
+          ))}
         </div>
         <div className="footer">
           <div className="pagination">
@@ -283,49 +285,31 @@ export default function MovieList({ favSection, changeFavSection }) {
               />
             </div>
             <div className="all-details">
-              <p className="movie-title">{popUpData.title} </p>
+              <p className="movie-title">
+                {popUpData.title}
+                <div
+                  className="fav "
+                  ref={nodeRef}
+                  onClick={() => handleAddFav(popUpData)}
+                >
+                  {fav.includes(popUpData.id) ? (
+                    <i
+                      className="fa-solid fa-heart fa-xl"
+                      onClick={() => handleClick("Removed from")}
+                    ></i>
+                  ) : (
+                    <i
+                      className="fa-regular fa-heart fa-xl"
+                      onClick={() => handleClick("Added in")}
+                    ></i>
+                  )}
+                </div>
+              </p>
               <div className="sub-title">
                 <p>{popUpData.release_date} </p>
                 <div onClick={handleOpen} className="movie-desc">
                   {Object.keys(popUpData).length > 0 &&
                     popUpData.genre_ids.map((id) => <p> {genreids[id]}</p>)}
-                </div>
-              </div>
-              <div className="score">
-                <div className="user-score">
-                  <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart blue">
-                      <path
-                        class="circle-bg"
-                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        class="circle"
-                        stroke-dasharray={`${popUpData.vote_average * 10},100`}
-                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <text x="20" y="20.35" class="percentage">
-                        {popUpData.vote_average * 10}%
-                      </text>
-                    </svg>
-                  </div>
-                  <div
-                    className="fav-in-popup "
-                    ref={nodeRef}
-                    onClick={() => handleAddFav(popUpData)}
-                  >
-                    {fav.includes(popUpData.id) ? (
-                      <i
-                        className="fa-solid fa-heart fa-xl"
-                        onClick={() => handleClick("Removed from")}
-                      ></i>
-                    ) : (
-                      <i
-                        className="fa-regular fa-heart fa-xl"
-                        onClick={() => handleClick("Added in")}
-                      ></i>
-                    )}
-                  </div>
                 </div>
               </div>
               <div className="overview">
