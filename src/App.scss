@@ -125,6 +125,7 @@
   height: 100%;
   width: 5rem;
   border-radius: 5px;
+  background: transparent;
 }
 
 .library .movie-details .title {
@@ -232,9 +233,6 @@
   position: relative;
 }
 
-/* .movie-card img:hover {
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-}  */
 .movie-card:hover {
   img {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -268,11 +266,19 @@
   cursor: pointer;
 }
 
-.movies .trending .movie-card img {
+.movies .trending .movie-card .trending-image {
   height: 80%;
   width: 100%;
   border-radius: 4px;
+
 }
+.movies .trending .movie-card .trending-image img{
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+}
+
+
 
 .subheading {
   font-family: "Montserrat", sans-serif;
@@ -977,4 +983,73 @@
   // font-style: italic;
   font-size: 14px;
   font-weight: 200;
+}
+
+
+// skeleton Design
+
+.skeleton{
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+.skeleton-text{
+  width: 100%;
+  height: 1rem;
+  margin: .25rem 0;
+  border-radius: 0.1rem;
+}
+@keyframes skeleton-loading {
+  0%{
+    background-color: hsla(120, 1%, 36%, 0.623);
+  }
+  100%{
+    background-color: hsla(60, 2%, 12%, 0.863);
+  }
+}
+
+
+// dummy card
+.dummy-movie-card{
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border-radius: 6px;
+  padding: 0.8rem;
+  background-color: var(--movie-card);
+  width: calc(100%/4.4);
+  height: 25rem;
+  position: relative;
+}
+.dummy-movie-card .trending-image{
+  height: 85%;
+  width: 100%;
+  border-radius: 4px;
+}
+.dummy-movie-card .skeleton-text{
+  margin: 0.4rem 0 0 0;
+  border-radius: 4px;
+  width: 80%;
+  display: inline-block;
+}
+.dummy-movie-card .movie-desc{
+  display: flex;
+  height: 1rem;
+}
+.dummy-movie-card .movie-desc p{
+  margin: 5px 10px 0 0;
+  border-radius: 30px;
+
+  width: 30%;
+}
+
+// dummy dummy-movie-details of favourite section
+.library .dummy-movie-details{
+
+  font-family: 'Montserrat', sans-serif;
+  height: 4rem;
+  padding: 10px;
+  margin: 0 2px;
+  display: flex;
+}
+.library .dummy-movie-details .fav-image{
+  height: 100%;
+  width: 10rem;
+  border-radius: 5px;
 }
