@@ -4,7 +4,6 @@ import { CSSTransition } from "react-transition-group";
 import { useState, useRef } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 export default function MovieList({
   favSection,
@@ -244,7 +243,7 @@ export default function MovieList({
           </div>
         </div>
         <div className="trending">
-          {loaded == false ? <>{loadingScreen()}</> : ""}
+          {loaded === false ? <>{loadingScreen()}</> : ""}
 
           {movies.map((movieObj) => (
             <CSSTransition

@@ -1026,16 +1026,19 @@
 }
 
 .pop-up .overview h4 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .pop-up .overview p {
+  border-radius: 10px;
   margin-top: 10px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Poppins', sans-serif;
   // font-style: italic;
-  font-size: 14px;
-  font-weight: 200;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 
