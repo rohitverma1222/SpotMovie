@@ -853,7 +853,29 @@
     cursor: pointer;
     font-weight: 900;
   }
-
+  .greet {
+    height: 2rem;
+  }
+  .greet .search-box{
+    height: 150%;
+  }
+  .search-box i{
+    font-size:1rem;
+  }
+  .greet .search-box input{
+    height: 100%;
+    width: 80%;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    border-radius: 25px;
+  
+    padding: 0 15px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    background-color: var(--hover-color);
+    color: #FFFEFE;
+  }
 }
 
 // pop-up design
@@ -1104,7 +1126,6 @@
 
 // dummy dummy-movie-details of favourite section
 .library .dummy-movie-details {
-
   font-family: 'Montserrat', sans-serif;
   height: 4rem;
   padding: 10px;

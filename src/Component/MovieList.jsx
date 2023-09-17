@@ -224,7 +224,7 @@ export default function MovieList({
                   onChange={(e) => handlesearchText(e)}
                   value={searchText}
                 ></input>
-                <i class="fas fa-search"></i>
+                <i className="fas fa-search"></i>
               </div>
               </>
             )}
@@ -235,10 +235,10 @@ export default function MovieList({
           Trending
           <div className="pagination">
             <button onClick={() => handleDecreasePage()}>
-              <i class="fa-solid fa-angle-left"></i>
+              <i className="fa-solid fa-angle-left"></i>
             </button>
             <button onClick={() => handleIncreasePage()}>
-              <i class="fa-solid fa-angle-right"></i>
+              <i className="fa-solid fa-angle-right"></i>
             </button>
           </div>
         </div>
